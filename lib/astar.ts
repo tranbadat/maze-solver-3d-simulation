@@ -186,7 +186,6 @@ export const aStar = (
     logger.log("INFO", "✓ Input validation passed", {})
 
     // ========== BƯỚC 2: INITIALIZATION ==========
-    logger.log("INFO", "", {})
     logger.log("INFO", "BƯỚC 2: KHỞI TẠO (Initialization)", {})
     logger.log("INFO", "- Tạo hàng đợi ưu tiên (openSet) chứa START", {})
     logger.log("INFO", "- Khởi tạo bảng đóng (closedSet)", {})
@@ -244,6 +243,7 @@ export const aStar = (
 
       // Log iteration chi tiết mỗi 50 bước (tránh log quá nhiều)
       if (iterations % 50 === 0) {
+        console.log(`Iteration ${iterations}: Processing node [${current.row},${current.col}] with f=${current.f}`)
         logger.log("DEBUG", `Iteration ${iterations}: Xử lý ô [${current.row},${current.col}]`, {
           f: current.f,
           g: current.g,
@@ -288,7 +288,7 @@ export const aStar = (
         const runtime = (endTime - startTime).toFixed(2)
 
         logger.log("INFO", "A* ALGORITHM COMPLETED SUCCESSFULLY ✓", {})
-        logger.log("INFO", "═══════════════════════════════════════════", {
+        logger.log("INFO", "═══════════════════════", {
           pathLength: path.length,
           totalIterations: iterations,
           runtimeMs: `${runtime} ms`,
@@ -373,9 +373,8 @@ export const aStar = (
     const runtime = (endTime - startTime).toFixed(2)
 
     logger.log("INFO", "", {})
-    logger.log("INFO", "═══════════════════════════════════════════", {})
     logger.log("INFO", "⚠ NO PATH FOUND", {})
-    logger.log("INFO", "═══════════════════════════════════════════", {
+    logger.log("INFO", "═══════════════════════", {
       totalIterations: iterations,
       runtimeMs: `${runtime} ms`,
       closedSetSize: closedSet.size,
@@ -390,9 +389,9 @@ export const aStar = (
 
     const errorMessage = error instanceof Error ? error.message : "Unknown error"
     logger.log("ERROR", "", {})
-    logger.log("ERROR", "═══════════════════════════════════════════", {})
+    logger.log("ERROR", "═══════════════════════", {})
     logger.log("ERROR", "❌ ERROR OCCURRED", {})
-    logger.log("ERROR", "═══════════════════════════════════════════", {
+    logger.log("ERROR", "═══════════════════════", {
       error: errorMessage,
       runtimeMs: `${runtime} ms`,
     })
@@ -442,7 +441,6 @@ export const aStarWithSteps = (grid: number[][], start: [number, number], goal: 
     logger.log("INFO", "✓ Input validation passed", {})
 
     // ========== BƯỚC 2: INITIALIZATION ==========
-    logger.log("INFO", "", {})
     logger.log("INFO", "BƯỚC 2: KHỞI TẠO (Initialization)", {})
     logger.log("INFO", "- Tạo hàng đợi ưu tiên (openSet) chứa START", {})
     logger.log("INFO", "- Khởi tạo bảng đóng (closedSet)", {})
@@ -472,7 +470,6 @@ export const aStarWithSteps = (grid: number[][], start: [number, number], goal: 
     const maxIterations = grid.length * grid[0].length * 2
 
     // ========== BƯỚC 3: DUYỆT CHÍNH ==========
-    logger.log("INFO", "", {})
     logger.log("INFO", "BƯỚC 3: DUYỆT VÀ CẬP NHẬT (Main Loop)", {})
 
     while (openSet.length > 0) {
@@ -530,7 +527,6 @@ export const aStarWithSteps = (grid: number[][], start: [number, number], goal: 
 
       // Check if goal found
       if (current.row === goalRow && current.col === goalCol) {
-        logger.log("INFO", "", {})
         logger.log("INFO", "✓✓✓ GOAL FOUND! ✓✓✓", {})
 
         const path: [number, number][] = []
@@ -543,7 +539,6 @@ export const aStarWithSteps = (grid: number[][], start: [number, number], goal: 
           pathSteps++
         }
 
-        logger.log("INFO", "", {})
         logger.log("INFO", "BƯỚC 4: TÍNH TOÁN KẾT QUẢ CUỐI CÙNG", {})
 
         const endTime = performance.now()
@@ -616,9 +611,8 @@ export const aStarWithSteps = (grid: number[][], start: [number, number], goal: 
     const endTime = performance.now()
     const runtime = (endTime - startTime).toFixed(2)
 
-    logger.log("INFO", "═══════════════════════════════════════════", {})
     logger.log("INFO", "⚠ NO PATH FOUND", {})
-    logger.log("INFO", "═══════════════════════════════════════════", {
+    logger.log("INFO", "═════════════════", {
       totalIterations: iterations,
       totalSteps: steps.length,
       runtimeMs: `${runtime} ms`,
@@ -630,7 +624,6 @@ export const aStarWithSteps = (grid: number[][], start: [number, number], goal: 
     const runtime = (endTime - startTime).toFixed(2)
 
     const errorMessage = error instanceof Error ? error.message : "Unknown error"
-    logger.log("ERROR", "═══════════════════════════════════════════", {})
     logger.log("ERROR", "❌ ERROR OCCURRED", {
       error: errorMessage,
       runtimeMs: `${runtime} ms`,

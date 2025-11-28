@@ -90,9 +90,7 @@ export const bfsWithSteps = (grid: number[][], start: [number, number], goal: [n
 
   try {
     // ========== BƯỚC 1: INPUT VALIDATION ==========
-    bfsLogger.log("INFO", "═══════════════════════════════════════════", {})
     bfsLogger.log("INFO", "BFS ALGORITHM STARTED", {})
-    bfsLogger.log("INFO", "═══════════════════════════════════════════", {})
 
     bfsLogger.log("INFO", "BƯỚC 1: VALIDATION INPUT", {
       gridSize: `${grid.length} x ${grid[0]?.length || 0}`,
@@ -153,7 +151,6 @@ export const bfsWithSteps = (grid: number[][], start: [number, number], goal: [n
     const maxIterations = grid.length * grid[0].length * 2
 
     // ========== BƯỚC 3: DUYỆT CHÍNH ==========
-    bfsLogger.log("INFO", "", {})
     bfsLogger.log("INFO", "BƯỚC 3: DUYỆT (Main Loop)", {})
     bfsLogger.log("INFO", "Duyệt queue theo FIFO (First In First Out)", {})
 
@@ -198,7 +195,6 @@ export const bfsWithSteps = (grid: number[][], start: [number, number], goal: [n
 
       // Kiểm tra có phải GOAL không
       if (current.row === goalRow && current.col === goalCol) {
-        bfsLogger.log("INFO", "", {})
         bfsLogger.log("INFO", "✓✓✓ GOAL FOUND! ✓✓✓", {})
 
         const path: [number, number][] = []
@@ -217,9 +213,8 @@ export const bfsWithSteps = (grid: number[][], start: [number, number], goal: [n
         const endTime = performance.now()
         const runtime = (endTime - startTime).toFixed(2)
 
-        bfsLogger.log("INFO", "═══════════════════════════════════════════", {})
         bfsLogger.log("INFO", "BFS ALGORITHM COMPLETED SUCCESSFULLY ✓", {})
-        bfsLogger.log("INFO", "═══════════════════════════════════════════", {
+        bfsLogger.log("INFO", "═══════════════════════", {
           pathLength: path.length,
           totalIterations: iterations,
           nodesVisited: visited.size,
@@ -272,9 +267,8 @@ export const bfsWithSteps = (grid: number[][], start: [number, number], goal: [n
     const endTime = performance.now()
     const runtime = (endTime - startTime).toFixed(2)
 
-    bfsLogger.log("INFO", "═══════════════════════════════════════════", {})
     bfsLogger.log("INFO", "⚠ NO PATH FOUND", {})
-    bfsLogger.log("INFO", "═══════════════════════════════════════════", {
+    bfsLogger.log("INFO", "═══════════════════════", {
       totalIterations: iterations,
       nodesVisited: visited.size,
       runtimeMs: `${runtime} ms`,
@@ -291,7 +285,6 @@ export const bfsWithSteps = (grid: number[][], start: [number, number], goal: [n
     const runtime = (endTime - startTime).toFixed(2)
 
     const errorMessage = error instanceof Error ? error.message : "Unknown error"
-    bfsLogger.log("ERROR", "═══════════════════════════════════════════", {})
     bfsLogger.log("ERROR", "❌ ERROR OCCURRED", {
       error: errorMessage,
       runtimeMs: `${runtime} ms`,
