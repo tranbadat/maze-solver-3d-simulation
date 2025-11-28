@@ -1,13 +1,16 @@
-++ Begin Patch
- # MeCung-AStar — 3D Maze Solver & Visualizer
 
- Interactive visualization of pathfinding algorithms (A* and BFS) using React, Next.js, and react-three/fiber.
 
- This project demonstrates algorithm behavior on randomly generated or custom mazes and visualizes
- step-by-step state (open set, closed set) in both 3D and UI panels, along with performance comparison
- between A* (heuristic-driven) and BFS.
+# MeCung-AStar — Multilingual README
 
- ---
+Choose a language:
+
+- [English README](./README.en.md)
+- [Tiếng Việt - README](./README.vi.md)
+
+---
+
+The project documentation is available in both English and Vietnamese. Click a link above to read the full documentation in your preferred language.
+
 
  ## Features
 
@@ -49,14 +52,14 @@
 
  ```powershell
  # Install dependencies
- pnpm install
+ npm install
 
  # Start dev server
- pnpm dev
+ npm dev
 
  # Build (production)
- pnpm build
- pnpm start
+ npm build
+ npm start
  ```
 
  If you prefer npm/yarn, use `npm install` / `npm run dev` etc.
@@ -148,6 +151,8 @@
 
  ## License
 
- MIT
+ MIT — see `LICENSE` for details.
 
- ---
+---
+
+© Tran Ba Dat
