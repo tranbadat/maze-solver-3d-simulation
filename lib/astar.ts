@@ -136,6 +136,10 @@ interface Node {
 const heuristic = (row: number, col: number, goalRow: number, goalCol: number): number => {
   // Manhattan distance: |x1 - x2| + |y1 - y2|
   return Math.abs(row - goalRow) + Math.abs(col - goalCol)
+  // Eurclid
+  // return Math.sqrt((row - goalRow) * (row - goalRow)
+        // + (col - goalCol) * (col - goalCol));
+
 }
 
 export const aStar = (
@@ -255,14 +259,12 @@ export const aStar = (
 
       // === 3b: Kiểm tra đã đến GOAL chưa ===
       if (current.row === goalRow && current.col === goalCol) {
-        logger.log("INFO", "", {})
         logger.log("INFO", "✓✓✓ GOAL FOUND! ✓✓✓", {})
         logger.log("INFO", `Đã tìm thấy GOAL tại [${goalRow}, ${goalCol}]`, {
           afterIteration: iterations,
         })
 
         // ========== BƯỚC 4: TRUY VẾT ĐƯỜNG ĐI ==========
-        logger.log("INFO", "", {})
         logger.log("INFO", "BƯỚC 4: TRUY VẾT ĐƯỜNG ĐI (Path Reconstruction)", {})
         logger.log("INFO", '- Từ GOAL → lần ngược về START dùng bảng "parent"', {})
 
@@ -281,7 +283,6 @@ export const aStar = (
         })
 
         // ========== BƯỚC 5: KẾT QUẢ CUỐI CÙNG ==========
-        logger.log("INFO", "", {})
         logger.log("INFO", "BƯỚC 5: TÍNH TOÁN KẾT QUẢ CUỐI CÙNG", {})
 
         const endTime = performance.now()
@@ -372,7 +373,6 @@ export const aStar = (
     const endTime = performance.now()
     const runtime = (endTime - startTime).toFixed(2)
 
-    logger.log("INFO", "", {})
     logger.log("INFO", "⚠ NO PATH FOUND", {})
     logger.log("INFO", "═══════════════════════", {
       totalIterations: iterations,
@@ -388,7 +388,6 @@ export const aStar = (
     const runtime = (endTime - startTime).toFixed(2)
 
     const errorMessage = error instanceof Error ? error.message : "Unknown error"
-    logger.log("ERROR", "", {})
     logger.log("ERROR", "═══════════════════════", {})
     logger.log("ERROR", "❌ ERROR OCCURRED", {})
     logger.log("ERROR", "═══════════════════════", {
@@ -545,7 +544,7 @@ export const aStarWithSteps = (grid: number[][], start: [number, number], goal: 
         const runtime = (endTime - startTime).toFixed(2)
 
         logger.log("INFO", "A* ALGORITHM COMPLETED SUCCESSFULLY ✓", {})
-        logger.log("INFO", "═══════════════════════════════════════════", {
+        logger.log("INFO", "═══════════════════", {
           pathLength: path.length,
           totalIterations: iterations,
           totalSteps: steps.length,

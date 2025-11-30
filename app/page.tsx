@@ -41,9 +41,12 @@ export default function Home() {
   )
   const handleStepChange = useCallback((step: AStarStep | null) => {
     console.log("Current Step:", step)
-     console.log("Step iterator:",step!==null && step.iteration >= 2 && step.iteration < steps.length)
+    console.log("Current is not null:", step!=null)
+    console.log("Current step length:", steps.length)
+    console.log("Current step >=3:", (step!=null&&step?.iteration >= 2 ))
+    console.log("Step setHidePathDuringVisualization:", (step!=null && step.iteration >= 2 && step.iteration < steps.length))
     setCurrentStep(step)
-    setHidePathDuringVisualization(step!==null && step.iteration >= 2 && step.iteration < steps.length ? true : false)
+    setHidePathDuringVisualization((step!=null && step.iteration >= 2 && step.iteration < steps.length) ? true : false)
   }, [])
   const handleSolve = useCallback(
     (inputGrid: number[][], inputStart: [number, number], inputGoal: [number, number]) => {
